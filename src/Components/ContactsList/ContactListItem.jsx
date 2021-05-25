@@ -6,7 +6,7 @@ import { getContactItemById } from '../../redux/phonebook/phonebook-selectors';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from '@material-ui/core';
-import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
+// import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
 
 const ContactListItem = ({ id }) => {
   const { name, number } = useSelector(getContactItemById(id));
