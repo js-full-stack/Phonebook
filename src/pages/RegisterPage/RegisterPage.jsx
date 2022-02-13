@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations } from '../../redux/auth';
-import { ToastContainer, Zoom } from 'react-toastify';
+import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Spinner from '../../Components/Loader';
 import styles from './RegisterPage.module.scss';
@@ -22,8 +22,11 @@ const RegisterPage = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const payload = { name, email, password };
-    dispatch(authOperations.register(payload));
+    if (password.length < 7) {
+      return toast('Пароль должен быть не короче 7 символов');
+    }
 
+    dispatch(authOperations.register(payload));
     setName('');
     setEmail('');
     setPassword('');
